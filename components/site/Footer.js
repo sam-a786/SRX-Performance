@@ -13,7 +13,7 @@ export default function Footer() {
             <Logo size={72} showText={true} />
             <p className="mt-5 text-sm text-neutral-600 leading-relaxed max-w-xs">Premium ECU remapping and performance software. Precision-engineered calibrations for the modern driver.</p>
             <div className="mt-6 flex flex-col gap-2.5">
-              <a href="https://instagram.com/srx.performance" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm gold-text hover:opacity-80">
+              <a href="https://instagram.com/srx.performance" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-[#E1306C] hover:opacity-80">
                 <Instagram className="w-4 h-4" /> @srx.performance
               </a>
               <a href="https://www.tiktok.com/@srxperformance" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm gold-text hover:opacity-80">

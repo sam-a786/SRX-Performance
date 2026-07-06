@@ -16,8 +16,8 @@ export default function Logo({ className = '', size = 56, showText = false }) {
         style={{
           width: size,
           height: size,
-          WebkitMaskImage: 'radial-gradient(ellipse 82% 70% at center, black 62%, transparent 100%)',
-          maskImage: 'radial-gradient(ellipse 82% 70% at center, black 62%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 78% 66% at center, black 38%, rgba(0,0,0,0.6) 62%, transparent 96%)',
+          maskImage: 'radial-gradient(ellipse 78% 66% at center, black 38%, rgba(0,0,0,0.6) 62%, transparent 96%)',
         }}
       >
         <Image

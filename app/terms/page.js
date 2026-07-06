@@ -12,7 +12,6 @@ export default function TermsPage() {
           <span className="section-eyebrow">Legal</span>
           <h1 className="font-display text-5xl font-medium mt-5">Terms &amp; Conditions</h1>
           <div className="prose prose-neutral mt-8 text-neutral-700 leading-relaxed space-y-6">
-            <p><strong>Effective date:</strong> {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
             <h2 className="text-xl font-semibold text-neutral-900">1. Services</h2>
             <p>SRX Performance provides ECU remapping, performance calibration and diagnostic services. All work is performed to industry standards. Estimated performance figures displayed on this website are indicative and may vary based on hardware, condition and driving style.</p>
             <h2 className="text-xl font-semibold text-neutral-900">2. Off-Road Solutions</h2>

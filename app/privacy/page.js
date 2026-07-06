@@ -12,7 +12,6 @@ export default function PrivacyPage() {
           <span className="section-eyebrow">Legal</span>
           <h1 className="font-display text-5xl font-medium mt-5">Privacy Policy</h1>
           <div className="prose prose-neutral mt-8 text-neutral-700 leading-relaxed space-y-6">
-            <p><strong>Effective date:</strong> {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
             <p>SRX Performance (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;) is committed to protecting your privacy. This policy explains how we collect, use and safeguard your information when you use our website.</p>
             <h2 className="text-xl font-semibold text-neutral-900">Information We Collect</h2>
             <p>We collect information you provide directly to us, such as when you complete our enquiry form (name, email, telephone, vehicle registration, vehicle make/model, requested service and your message). We also collect standard analytics data such as page views and interactions via Google Analytics.</p>

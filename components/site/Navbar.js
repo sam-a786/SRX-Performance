@@ -27,7 +27,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/85 backdrop-blur-lg border-b border-neutral-200/70' : 'bg-white/40 backdrop-blur-md'}`}>
+    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white border-b border-neutral-200 shadow-sm' : 'bg-white border-b border-neutral-100'}`}>
       <div className="max-w-7xl mx-auto px-5 lg:px-10 h-20 flex items-center justify-between">
         <Logo size={56} />
         <nav className="hidden lg:flex items-center gap-9">
