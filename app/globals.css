@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 6%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 6%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 6%;
+    --primary: 40 55% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 6%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 40 55% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 40 55% 45%;
+    --radius: 0.75rem;
+    --gold: 40 55% 45%;
+    --gold-light: 40 60% 65%;
+    --gold-dark: 38 55% 38%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  h1, h2, h3, h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; letter-spacing: -0.02em; }
+  .font-display { font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: -0.01em; }
+}
+
+@layer components {
+  .gold-text { color: hsl(var(--gold)); }
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #B8862B 0%, #E5C97A 45%, #B8862B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .gold-border { border-color: hsl(var(--gold)); }
+  .btn-gold {
+    background: linear-gradient(135deg, #B8862B 0%, #D4A94A 50%, #B8862B 100%);
+    color: #fff;
+    box-shadow: 0 6px 24px -6px rgba(184, 134, 43, 0.55);
+    transition: all .3s ease;
+  }
+  .btn-gold:hover {
+    box-shadow: 0 10px 32px -6px rgba(184, 134, 43, 0.75);
+    transform: translateY(-1px);
+  }
+  .luxury-card {
+    background: #fff;
+    border: 1px solid hsl(0 0% 92%);
+    border-radius: 1rem;
+    transition: all .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .luxury-card:hover {
+    border-color: hsl(var(--gold) / .6);
+    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.12), 0 0 0 1px hsl(var(--gold) / .2);
+    transform: translateY(-2px);
+  }
+  .section-eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .72rem; font-weight: 600; letter-spacing: .22em;
+    text-transform: uppercase; color: hsl(var(--gold));
+  }
+  .section-eyebrow::before, .section-eyebrow::after {
+    content: ''; width: 24px; height: 1px; background: hsl(var(--gold) / .5);
+  }
+  .glass {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border: 1px solid rgba(255,255,255,0.6);
+  }
+  .hairline { height:1px; background: linear-gradient(90deg, transparent, hsl(0 0% 85%), transparent); }
+  .gold-hairline { height:1px; background: linear-gradient(90deg, transparent, hsl(var(--gold) / .6), transparent); }
+  .power-bar {
+    height: 14px; border-radius: 999px; background: hsl(0 0% 94%);
+    position: relative; overflow: hidden;
+  }
+  .power-bar-fill {
+    position: absolute; inset: 0; border-radius: 999px;
+    background: linear-gradient(90deg, #1a1a1a, #333);
+    transition: width 1.2s cubic-bezier(.2,.8,.2,1);
+  }
+  .power-bar-fill.gold {
+    background: linear-gradient(90deg, #B8862B, #E5C97A, #B8862B);
+  }
+}
