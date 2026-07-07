@@ -5,7 +5,7 @@ import Navbar from '@/components/site/Navbar';
 import Footer from '@/components/site/Footer';
 import Reveal from '@/components/site/Reveal';
 import { CheckCircle2, Loader2, Phone, Mail, MapPin, Instagram } from 'lucide-react';
-import { trackEvent, Events } from '@/lib/analytics';
+import { trackEvent, trackLeadConversion, Events } from '@/lib/analytics';
 
 const SERVICES = ['Stage 1 Remap','Stage 2 Remap','Stage 3 Remap','DPF Solutions','EGR Solutions','AdBlue Solutions','Speed Limiter Removal','Pop & Bang Calibration','Launch Control','Diagnostics','Vehicle Health Check','Other / Custom'];
 
@@ -28,6 +28,8 @@ function ContactForm() {
       const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
       const data = await res.json();
       if (data.ok) {
+        // Fire Google Ads conversion ONLY after the enquiry is confirmed captured.
+        trackLeadConversion({ transaction_id: data.id, event_category: 'contact_form' });
         setStatus({ state: 'success', message: 'Your enquiry has been sent. We’ll be in touch shortly.' });
         setForm({ name: '', email: '', telephone: '', registration: '', make: '', model: '', service: '', message: '' });
       } else setStatus({ state: 'error', message: data.error || 'Something went wrong.' });

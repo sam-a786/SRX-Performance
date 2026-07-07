@@ -7,7 +7,7 @@ import Navbar from '@/components/site/Navbar';
 import Footer from '@/components/site/Footer';
 import Reveal from '@/components/site/Reveal';
 import { ArrowRight, Gauge, Zap, Search, Loader2, CheckCircle2, Car, Palette, Fuel, Calendar, Cog, ShieldCheck } from 'lucide-react';
-import { trackEvent, trackConversion, Events } from '@/lib/analytics';
+import { trackEvent, trackLeadConversion, Events } from '@/lib/analytics';
 
 const FUEL_OPTIONS = ['Petrol', 'Diesel', 'Hybrid', 'Plug-in Hybrid', 'Electric'];
 const CURRENT_YEAR = new Date().getFullYear();
@@ -236,9 +236,6 @@ function LeadCapture({ vehicle, notice, isManualEntry }) {
     e.preventDefault();
     setStatus({ state: 'submitting' });
     trackEvent(Events.leadCapture, { vehicle: `${details.make} ${details.model}`.trim() });
-    // Google Ads conversion. Once you have a specific conversion label, replace with
-    // 'AW-18261047881/YOUR_LABEL' for accurate tracking.
-    trackConversion('lead_capture', 'AW-18261047881', { currency: 'GBP', value: 10 });
     try {
       const payload = {
         ...contact,
@@ -258,8 +255,13 @@ function LeadCapture({ vehicle, notice, isManualEntry }) {
         body: JSON.stringify(payload),
       });
       const data = await res.json();
-      if (data.ok) setStatus({ state: 'success' });
-      else setStatus({ state: 'error', message: data.error || 'Something went wrong.' });
+      if (data.ok) {
+        // Fire Google Ads conversion ONLY after the lead is confirmed captured.
+        trackLeadConversion({ transaction_id: data.id, event_category: 'lead_calculator' });
+        setStatus({ state: 'success' });
+      } else {
+        setStatus({ state: 'error', message: data.error || 'Something went wrong.' });
+      }
     } catch { setStatus({ state: 'error', message: 'Network error. Please try again.' }); }
   };
 

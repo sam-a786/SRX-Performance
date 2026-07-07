@@ -3,15 +3,38 @@ import { MongoClient } from 'mongodb';
 import { Resend } from 'resend';
 import { lookupVehicle } from '@/lib/vehicle-service';
 
-// ---- MongoDB (singleton) ----
-let client;
-let db;
+// ---- MongoDB (self-healing singleton) ----
+// If the connection is refused (e.g. Mongo restart), we clear the cached client
+// so the next request establishes a fresh connection instead of using the dead one.
+let client = null;
+let db = null;
 async function getDb() {
-  if (db) return db;
-  client = client || new MongoClient(process.env.MONGO_URL);
-  await client.connect();
-  db = client.db(process.env.DB_NAME || 'srx_performance');
-  return db;
+  if (db) {
+    try {
+      // Cheap ping to make sure the cached connection is still alive.
+      await db.command({ ping: 1 });
+      return db;
+    } catch (_) {
+      // Cached connection is dead — reset and reconnect below.
+      try { await client?.close(); } catch (_) {}
+      client = null;
+      db = null;
+    }
+  }
+  try {
+    client = new MongoClient(process.env.MONGO_URL, {
+      serverSelectionTimeoutMS: 3000,
+      connectTimeoutMS: 3000,
+    });
+    await client.connect();
+    db = client.db(process.env.DB_NAME || 'srx_performance');
+    return db;
+  } catch (err) {
+    // Reset so the next call retries fresh.
+    client = null;
+    db = null;
+    throw err;
+  }
 }
 
 // ---- Resend (singleton, tolerates missing key) ----
