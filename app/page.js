@@ -7,7 +7,7 @@ import Navbar from '@/components/site/Navbar';
 import Footer from '@/components/site/Footer';
 import Reveal from '@/components/site/Reveal';
 import { LOGO_URL } from '@/components/site/Logo';
-import { trackEvent, Events } from '@/lib/analytics';
+import { trackEvent, trackCallConversion, Events } from '@/lib/analytics';
 import { useState } from 'react';
 
 const HERO_IMG = 'https://customer-assets.emergentagent.com/job_vehicle-calibration/artifacts/y0h2px8x_1595593791-1288-Lamborghini-Aventador-Glod-Gloss-wrap-1-.jpg';
@@ -373,7 +373,7 @@ export default function HomePage() {
             <p className="mt-4 text-neutral-600 max-w-xl mx-auto">Fast response, honest advice and calibrations designed around your vehicle — not templated files.</p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" onClick={() => trackEvent(Events.quoteRequest, { location: 'home-final' })} className="btn-gold px-8 py-4 rounded-full font-semibold text-sm inline-flex items-center gap-2 justify-center">Get a Free Quote <ArrowRight className="w-4 h-4" /></Link>
-              <a href="tel:+447919012892" onClick={() => trackEvent(Events.phoneClick, { location: 'home-final' })} className="px-8 py-4 rounded-full font-semibold text-sm border border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white transition inline-flex items-center gap-2 justify-center"><Phone className="w-4 h-4" /> 07919 012892</a>
+              <a href="tel:+447919012892" onClick={(e) => { e.preventDefault(); trackCallConversion('tel:+447919012892'); }} className="px-8 py-4 rounded-full font-semibold text-sm border border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white transition inline-flex items-center gap-2 justify-center"><Phone className="w-4 h-4" /> 07919 012892</a>
             </div>
           </div>
         </div>

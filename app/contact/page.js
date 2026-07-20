@@ -5,7 +5,7 @@ import Navbar from '@/components/site/Navbar';
 import Footer from '@/components/site/Footer';
 import Reveal from '@/components/site/Reveal';
 import { CheckCircle2, Loader2, Phone, Mail, MapPin, Instagram } from 'lucide-react';
-import { trackEvent, trackLeadConversion, Events } from '@/lib/analytics';
+import { trackEvent, trackLeadConversion, trackCallConversion, Events } from '@/lib/analytics';
 
 const SERVICES = ['Stage 1 Remap','Stage 2 Remap','Stage 3 Remap','DPF Solutions','EGR Solutions','AdBlue Solutions','Speed Limiter Removal','Pop & Bang Calibration','Launch Control','Diagnostics','Vehicle Health Check','Other / Custom'];
 
@@ -99,7 +99,7 @@ export default function ContactPage() {
             <div className="luxury-card p-7">
               <h3 className="font-semibold text-lg mb-4">Direct Contact</h3>
               <ul className="space-y-4 text-sm text-neutral-700">
-                <li className="flex items-start gap-3"><Phone className="w-4 h-4 gold-text mt-1" /><div><div className="text-xs text-neutral-500">Phone</div><a href="tel:+447919012892" onClick={()=>trackEvent(Events.phoneClick, { location: 'contact-sidebar' })} className="hover:gold-text">+44 7919 012892</a></div></li>
+                <li className="flex items-start gap-3"><Phone className="w-4 h-4 gold-text mt-1" /><div><div className="text-xs text-neutral-500">Phone</div><a href="tel:+447919012892" onClick={(e) => { e.preventDefault(); trackCallConversion('tel:+447919012892'); }} className="hover:gold-text">+44 7919 012892</a></div></li>
                 <li className="flex items-start gap-3"><Mail className="w-4 h-4 gold-text mt-1" /><div><div className="text-xs text-neutral-500">Email</div><a href="mailto:performance.srx@gmail.com" onClick={()=>trackEvent(Events.emailClick, { location: 'contact-sidebar' })} className="hover:gold-text">performance.srx@gmail.com</a></div></li>
                 <li className="flex items-start gap-3"><MapPin className="w-4 h-4 gold-text mt-1" /><div><div className="text-xs text-neutral-500">Location</div>Cardiff, United Kingdom</div></li>
                 <li className="flex items-start gap-3"><Instagram className="w-4 h-4 gold-text mt-1" /><div><div className="text-xs text-neutral-500">Instagram</div><a href="https://instagram.com/srx.performance" target="_blank" rel="noopener noreferrer" className="hover:gold-text">@srx.performance</a></div></li>

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Instagram, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import Logo from './Logo';
-import { trackEvent, Events } from '@/lib/analytics';
+import { trackEvent, trackCallConversion, Events } from '@/lib/analytics';
 
 export default function Footer() {
   return (
@@ -47,7 +47,7 @@ export default function Footer() {
               <li className="flex items-start gap-2.5"><MapPin className="w-4 h-4 gold-text mt-0.5" /> Cardiff, United Kingdom</li>
               <li className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 gold-text mt-0.5" />
-                <a href="tel:+447919012892" onClick={() => trackEvent(Events.phoneClick, { location: 'footer' })} className="hover:gold-text">+44 7919 012892</a>
+                <a href="tel:+447919012892" onClick={(e) => { e.preventDefault(); trackCallConversion('tel:+447919012892'); }} className="hover:gold-text">+44 7919 012892</a>
               </li>
               <li className="flex items-start gap-2.5">
                 <Mail className="w-4 h-4 gold-text mt-0.5" />
