@@ -43,7 +43,7 @@ export default function Navbar() {
         </nav>
         <div className="hidden lg:flex items-center gap-3">
           <a href="tel:+447919012892" onClick={(e) => { e.preventDefault(); trackCallConversion('tel:+447919012892'); }} className="flex items-center gap-2 text-[13px] font-medium text-neutral-800 hover:gold-text transition">
-            <Phone className="w-4 h-4" /> 07919 012892
+            <Phone className="w-4 h-4" /> +447919012892
           </a>
           <Link href="/contact" onClick={() => trackEvent(Events.quoteRequest, { location: 'navbar' })} className="btn-gold px-5 py-2.5 rounded-full text-[13px] font-semibold">
             Get a Quote
@@ -60,7 +60,7 @@ export default function Navbar() {
               <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className={`text-sm font-medium ${pathname === item.href ? 'gold-text' : 'text-neutral-800'}`}>{item.label}</Link>
             ))}
             <a href="tel:+447919012892" onClick={(e) => { e.preventDefault(); setOpen(false); trackCallConversion('tel:+447919012892'); }} className="text-sm font-medium text-neutral-800 flex items-center gap-2">
-              <Phone className="w-4 h-4" /> 07919 012892
+              <Phone className="w-4 h-4" /> +447919012892
             </a>
             <Link href="/contact" onClick={() => { trackEvent(Events.quoteRequest, { location: 'mobile-menu' }); setOpen(false); }} className="btn-gold px-5 py-3 rounded-full text-sm font-semibold text-center">Get a Quote</Link>
           </nav>
