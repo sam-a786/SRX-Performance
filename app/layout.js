@@ -38,7 +38,7 @@ const structuredData = {
   '@type': 'AutomotiveBusiness',
   name: 'SRX Performance',
   image: `${SITE_URL}/logo.png`,
-  telephone: '+44 7919 012892',
+  telephone: '+447919012892',
   email: 'performance.srx@gmail.com',
   url: SITE_URL,
   address: { '@type': 'PostalAddress', addressLocality: 'Cardiff', addressCountry: 'GB' },
