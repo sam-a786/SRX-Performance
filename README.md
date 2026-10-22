@@ -115,6 +115,8 @@ Two Google Ads conversions fire automatically:
 | Lead / Book Appointment | `ylSRCMX6jcMcEMn0xYNE` | Successful Contact form or Calculator lead submission |
 | Click to Call | `vh5rCMKO1tMcEMn0xYNE` | Any phone number click |
 
+**Google Tag Manager** (`GTM-TD3XVKKM`) is installed on every page: the main script sits at the top of `<head>` and the `<noscript>` iframe comes right after `<body>` (see `app/layout.js`). The ID comes from `NEXT_PUBLIC_GTM_ID` and falls back to `GTM-TD3XVKKM` when that variable isn't set. Google Ads conversions already fire directly from the site, so **don't create duplicate Google Ads conversion tags inside GTM**. Doing so would count every conversion twice.
+
 Engagement events for GA4/GTM: `check_my_vehicle_click`, `quote_request_click`, `phone_number_click`, `email_link_click`, `vehicle_lookup`, `contact_form_submit`, `lead_capture_submit`.
 
 ---
