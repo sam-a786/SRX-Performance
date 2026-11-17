@@ -1,6 +1,7 @@
 import './globals.css';
 import Script from 'next/script';
 import WhatsAppButton from '@/components/site/WhatsAppButton';
+import { ReviewPopup } from '@/components/site/ReviewWidgets';
 
 const SITE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://srxperformance.co.uk';
 // Google Tag Manager container (falls back to the live SRX container if the env var is unset)
@@ -95,6 +96,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         )}
         {children}
         <WhatsAppButton />
+        <ReviewPopup />
       </body>
     </html>
   );

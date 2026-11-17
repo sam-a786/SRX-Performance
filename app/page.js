@@ -7,6 +7,7 @@ import Navbar from '@/components/site/Navbar';
 import Footer from '@/components/site/Footer';
 import Reveal from '@/components/site/Reveal';
 import { LOGO_URL } from '@/components/site/Logo';
+import { ReviewBanner } from '@/components/site/ReviewWidgets';
 import { trackEvent, trackCallConversion, Events } from '@/lib/analytics';
 import { useState } from 'react';
 
@@ -222,6 +223,7 @@ export default function HomePage() {
               <h2 className="font-display text-4xl lg:text-5xl font-medium mt-4">Trusted by Discerning Drivers</h2>
             </div>
           </Reveal>
+          <ReviewBanner className="mb-12" />
           <div className="grid md:grid-cols-2 gap-6">
             {[
               { text: "Thank you so much bro, I've had maps done in the past never had such good service though \ud83e\udd23. Appreciate the quick service and the quality map as well feels like a new car defo coming back to you!" },
@@ -240,6 +242,9 @@ export default function HomePage() {
                 </div>
               </Reveal>
             ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link href="/reviews" data-testid="home-all-reviews-link" className="inline-flex items-center gap-2 text-sm font-semibold gold-text hover:opacity-80">Read all customer reviews <ArrowRight className="w-4 h-4" /></Link>
           </div>
         </div>
       </section>

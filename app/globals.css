@@ -103,3 +103,11 @@
     background: linear-gradient(90deg, #B8862B, #E5C97A, #B8862B);
   }
 }
+
+/* On small phones the review popup spans the full width at the bottom —
+   lift the WhatsApp button above it while the popup is open. */
+@media (max-width: 480px) {
+  body:has(.gfs-popup-052018:not(.is-closed)) [data-testid="whatsapp-float-btn"] {
+    bottom: 104px;
+  }
+}
